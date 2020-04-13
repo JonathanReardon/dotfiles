@@ -102,7 +102,7 @@ alias tmuxrc='sudo vim ~/dotfiles/.tmux.conf'
 alias alacrittyrc='sudo vim ~/dotfiles/alacritty.yml'
 alias vifmrc='vim ~/dotfiles/vifmrc' 
 alias jn='jupyter notebook'
-alias vim='nvim'
+alias vim='./nvim.appimage'
 
 # git aliases
 alias gs='git status'
