@@ -20,6 +20,8 @@ Plug 'zchee/deoplete-go'                    " Go-lang completion
 Plug 'zchee/deoplete-jedi'                  " multi-lang completion
 Plug 'vifm/vifm.vim'                        " file manager
 Plug 'jalvesaq/Nvim-R'                      " R support
+Plug 'jalvesaq/R-Vim-runtime'		    " for python syntax highlighting in Plug '
+Plug 'fatih/vim-go'			    " Go development plugin
 
 call plug#end()
 
@@ -59,4 +61,5 @@ let g:neotex_delay = 1000                   " document update interval
 let g:tex_flavor = 'latex'                  " prevents issues
 
 syntax on                                   " syntax highlighting
+let g:rmd_syn_langs = ["r", "python"]       " python syntax highlight in Rmd 
 autocmd BufWritePost ~/.bashrc !source
