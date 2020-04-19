@@ -103,7 +103,7 @@ alias alacrittyrc='sudo ~/nvim.appimage ~/dotfiles/alacritty.yml'
 alias vifmrc='sudo ~/nvim.appimage ~/dotfiles/vifmrc' 
 alias jn='jupyter notebook'
 alias vim='~/nvim.appimage'
-alias nvim='~/nvim/appimage'
+alias nvim='~/nvim.appimage'
 
 # git aliases
 alias gs='git status'
