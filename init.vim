@@ -25,8 +25,8 @@ Plug 'fatih/vim-go'			    " Go development plugin
 
 call plug#end()
 
+set number
 set laststatus=2                            " always show statusline (for lightline)
-set number relativenumber
 set noerrorbells
 set tabstop=4 softtabstop=4                 " 1 tab == 4 spaces
 set shiftwidth=4                            " single tab as indent
