@@ -100,9 +100,10 @@ alias bashrc='sudo nvim ~/dotfiles/bashrc'
 alias vimrc='sudo nvim ~/dotfiles/init.vim'
 alias tmuxrc='sudo nvim ~/dotfiles/tmux-conf'
 alias alacrittyrc='sudo nvim ~/dotfiles/alacritty.yml'
-alias vifmrc='vim ~/dotfiles/vifmrc' 
+alias vifmrc='nvim ~/dotfiles/vifmrc' 
 alias jn='jupyter notebook'
 alias vim='~/nvim.appimage'
+alias nvim='~/nvim/appimage'
 
 # git aliases
 alias gs='git status'
