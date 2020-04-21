@@ -10,7 +10,7 @@ Plug 'preservim/nerdcommenter'
 Plug 'scrooloose/syntastic'                 " code syntax checking
 Plug 'Shougo/deoplete.nvim'                 " asynchronous code completion
 Plug 'brooth/far.vim'                       " find and replace
-Plug 'roxma/nvim-completion-manager'
+"Plug 'roxma/nvim-completion-manager'
 Plug 'ap/vim-css-color'                     " color highlighting
 Plug 'itchyny/lightline.vim'                
 Plug 'vim-scripts/indentpython.vim'
