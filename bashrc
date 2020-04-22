@@ -1,26 +1,31 @@
+#==========================================================================
+# My personal $HOME/.bashrc FILE
+#==========================================================================
+
 # If not running interactively, don't do anything
-case $- in
-    *i*) ;;
-      *) return;;
-esac
+[ -z "$PS1" ] && return
 
-# don't put duplicate lines or lines starting with space in the history.
+export TERM=xterm-256color
+export EDITOR="nvim"
+
+#--------------------------------------------------------------------------
+# Enable options
+#--------------------------------------------------------------------------
+
+shopt -s histappend	# append to history file, don't overwrite
+shopt -s checkwinsize	# check windowsize after each command, update line/col values
+shopt -s cdspell	# cd argument spellcheck
+shopt -s cdable_vars	# treat nondir arg to cd as a variable whose value is the dir to go to
+shopt -s checkhash	# check hash table commands still exist before use, if not use normal PATH search
+shopt -s sourcepath	# search $PATH for file and then look in current dir
+shopt -s cmdhist	# save all lines of multiline command in one history entry
+shopt -s globstar	# pattern "**" in pathname extension will match all files
+			# and zero or more dirs and sub-dirs
+
+# History
 HISTCONTROL=ignoreboth
-
-# append to the history file, don't overwrite it
-shopt -s histappend
-
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
 HISTFILESIZE=2000
-
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
-shopt -s checkwinsize
-
-# If set, the pattern "**" used in a pathname expansion context will
-# match all files and zero or more directories and subdirectories.
-#shopt -s globstar
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -66,7 +71,14 @@ xterm*|rxvt*)
     ;;
 esac
 
-# enable color support of ls and also add handy aliases
+#==========================================================================
+# Aliases
+#==========================================================================
+
+#--------------------------------------------------------------------------
+# Color support
+#--------------------------------------------------------------------------
+
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
@@ -81,7 +93,10 @@ fi
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# some more ls aliases
+#--------------------------------------------------------------------------
+# Basic commands
+#--------------------------------------------------------------------------
+
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
@@ -90,20 +105,38 @@ alias grep='grep --color=auto'
 alias ..='cd ..'
 alias mv='mv -i'
 alias rm='rm -i'
+
+#--------------------------------------------------------------------------
+# Package management
+#--------------------------------------------------------------------------
+
 alias update='sudo apt-get update'
 alias upgrade='sudo apt-get upgrade'
 alias install='sudo apt-get install'
 alias remove='sudo apt-get remove'
+
+#--------------------------------------------------------------------------
+# Dotfiles
+#--------------------------------------------------------------------------
+
 alias bashrc='sudo ~/nvim.appimage ~/dotfiles/bashrc'
 alias vimrc='sudo ~/nvim.appimage ~/dotfiles/init.vim'
 alias tmuxrc='sudo ~/nvim.appimage ~/dotfiles/tmux-conf'
 alias alacrittyrc='sudo ~/nvim.appimage ~/dotfiles/alacritty.yml'
 alias vifmrc='sudo ~/nvim.appimage ~/dotfiles/vifmrc' 
+
+#--------------------------------------------------------------------------
+# Tools
+#--------------------------------------------------------------------------
+
 alias jn='jupyter notebook'
 alias vim='~/nvim.appimage'
 alias nvim='~/nvim.appimage'
 
-# git aliases
+#--------------------------------------------------------------------------
+# Git
+#--------------------------------------------------------------------------
+
 alias gs='git status'
 alias gpom='git push origin master'
 alias ga='git add'
@@ -111,10 +144,21 @@ alias gc='git commit -m'
 alias gs='git status'
 alias gphm="git push heroku master"
 
-# turn Twitter dev app on or off from any dir
-acon()
+#--------------------------------------------------------------------------
+# Twitter dev app
+#--------------------------------------------------------------------------
+
+alias botdir='cd $HOME/Twitter_Dev_App/Academic_Chatter'
+alias boton=acon
+alias botoff=acoff
+alias botchange='git add .; git commit -m "test"; git push heroku master'
+
+#==========================================================================
+# Functions
+#==========================================================================
+
+function acon()		# turn AC dev app on (from any dir)
 {
-	# if not in AC directory, go there and turn AC bot off
 	if [ $PWD != '/home/jon/Twitter_Dev_App/Academic_Chatter' ];
 	then 
 		cd '/home/jon/Twitter_Dev_App/Academic_Chatter'; heroku ps:scale worker=1; cd - > /dev/null 2>&1
@@ -123,9 +167,8 @@ acon()
 	fi
 }
 
-acoff()
+function acoff()	# turn AC dev app off (from any dir)
 {
-	# if not in AC directory, go there and turn AC bot off
 	if [ $PWD != '/home/jon/Twitter_Dev_App/Academic_Chatter' ];
 	then 
 		cd '/home/jon/Twitter_Dev_App/Academic_Chatter'; heroku ps:scale worker=0; cd - > /dev/null 2>&1
@@ -134,11 +177,27 @@ acoff()
 	fi
 }
 
-# academic chatter aliases
-alias botdir='cd $HOME/Twitter_Dev_App/Academic_Chatter'
-alias boton=acon
-alias botoff=acoff
-alias botchange='git add .; git commit -m "test"; git push heroku master'
+function extract()      # Auto extraction
+{
+    if [ -f $1 ] ; then
+        case $1 in
+            *.tar.bz2)   tar xvjf $1     ;;
+            *.tar.gz)    tar xvzf $1     ;;
+            *.bz2)       bunzip2 $1      ;;
+            *.rar)       unrar x $1      ;;
+            *.gz)        gunzip $1       ;;
+            *.tar)       tar xvf $1      ;;
+            *.tbz2)      tar xvjf $1     ;;
+            *.tgz)       tar xvzf $1     ;;
+            *.zip)       unzip $1        ;;
+            *.Z)         uncompress $1   ;;
+            *.7z)        7z x $1         ;;
+            *)           echo "'$1' cannot be extracted via >extract<" ;;
+        esac
+    else
+        echo "'$1' is not a valid file!"
+    fi
+}
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
