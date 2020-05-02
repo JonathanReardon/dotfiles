@@ -1,4 +1,6 @@
-# Configuration for Alacritty, the GPU enhanced terminal emulator.
+#==========================================================================
+# My personal $HOME/alacritty/alacritty.yml config FILE
+#==========================================================================
 
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
@@ -17,39 +19,30 @@ window:
   #
   # Specified in number of columns/lines, not pixels.
   # If both are `0`, this setting is ignored.
-  #dimensions:
-  #  columns: 0
-  #  lines: 0
+  dimensions:
+     columns: 80
+     lines: 34
 
   # Window position (changes require restart)
-  #
-  # Specified in number of pixels.
   # If the position is not set, the window manager will handle the placement.
   #position:
-  #  x: 0
-  #  y: 0
+  #  x: 80
+  #  y: 80
+  
+  # Window decorations
+  # Setting this to none will result in a window without borders and titlebar.
+  decorations: full
 
   # Window padding (changes require restart)
   #
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
-  #padding:
-  x: 0
-  y: 0
+  padding:
+     x: 2
+     y: 2
 
   # Spread additional padding evenly around the terminal content.
   #dynamic_padding: false
-
-  # Window decorations
-  #
-  # Values for `decorations`:
-  #     - full: Borders and title bar
-  #     - none: Neither borders nor title bar
-  #
-  # Values for `decorations` (macOS only):
-  #     - transparent: Title bar, transparent background and title bar buttons
-  #     - buttonless: Title bar, transparent background, but no title bar buttons
-  #decorations: full
 
   # Startup Mode (changes require restart)
   #
@@ -61,23 +54,7 @@ window:
   # Values for `startup_mode` (macOS only):
   #   - SimpleFullscreen
   #startup_mode: Windowed
-
-  # Window title
-  #title: Alacritty
-
-  # Window class (Linux/BSD only):
-  #class:
-    # Application instance name
-    #instance: Alacritty
-    # General application class
-    #general: Alacritty
-
-  # GTK theme variant (Linux/BSD only)
-  #
-  # Override the variant of the GTK theme. Commonly supported values are `dark` and `light`.
-  # Set this to `None` to use the default theme variant.
-  #gtk_theme_variant: None
-
+  
 scrolling:
   # Maximum number of lines in the scrollback buffer.
   # Specifying '0' will disable scrolling.
@@ -103,101 +80,66 @@ scrolling:
 font:
   # The normal (roman) font face to use.
   normal:
-    family: 'Knack Nerd Font' 
+    family: "Hack Nerd Font Mono"
     style: Regular
 
+    #bold:
+    #family: Fire Code
+    #style: Bold
+    #italic:
+    #family: Fira Code
+    #style: Italic
+
   # Point size
-  size: 11.0
+  size: 12
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
   #offset:
-  #  x: 0
-  #  y: 0
+     #x: 0
+     #y: 0
 
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increasing `x` moves the glyph to the right,
   # increasing `y` moves the glyph upwards.
   #glyph_offset:
-  #  x: 0
-  #  y: 0
-
-  # Thin stroke font rendering (macOS only)
-  #
-  # Thin strokes are suitable for retina displays, but for non-retina screens
-  # it is recommended to set `use_thin_strokes` to `false`
-  #
-  # macOS >= 10.14.x:
-  #
-  # If the font quality on non-retina display looks bad then set
-  # `use_thin_strokes` to `true` and enable font smoothing by running the
-  # following command:
-  #   `defaults write -g CGFontRenderingFontSmoothingDisabled -bool NO`
-  #
-  # This is a global setting and will require a log out or restart to take
-  # effect.
-  #use_thin_strokes: true
-
+     #x: 0
+     #y: 0
+     
 # Colors (Dracula)
 colors:
   # Default colors
   primary:
-    background: '#282a36'
-    foreground: '#f8f8f2'
-
+    background: '0x282a36'
+    foreground: '0xf8f8f2'
+ 
   # Normal colors
   normal:
-    black:   '#000000'
-    red:     '#ff5555'
-    green:   '#50fa7b'
-    yellow:  '#f1fa8c'
-    blue:    '#caa9fa'
-    magenta: '#ff79c6'
-    cyan:    '#8be9fd'
-    white:   '#bfbfbf'
-
+    black:   '0x000000'
+    red:     '0xff5555'
+    green:   '0x50fa7b'
+    yellow:  '0xf1fa8c'
+    blue:    '0xbd93f9'
+    magenta: '0xff79c6'
+    cyan:    '0x8be9fd'
+    white:   '0xbbbbbb'
+ 
   # Bright colors
   bright:
-    black:   '#575b70'
-    red:     '#ff6e67'
-    green:   '#5af78e'
-    yellow:  '#f4f99d'
-    blue:    '#caa9fa'
-    magenta: '#ff92d0'
-    cyan:    '#9aedfe'
-    white:   '#e6e6e6'
-
-# Visual Bell
-#
-# Any time the BEL code is received, Alacritty "rings" the visual bell. Once
-# rung, the terminal background will be set to white and transition back to the
-# default background color. You can control the rate of this transition by
-# setting the `duration` property (represented in milliseconds). You can also
-# configure the transition function by setting the `animation` property.
-#
-# Values for `animation`:
-#   - Ease
-#   - EaseOut
-#   - EaseOutSine
-#   - EaseOutQuad
-#   - EaseOutCubic
-#   - EaseOutQuart
-#   - EaseOutQuint
-#   - EaseOutExpo
-#   - EaseOutCirc
-#   - Linear
-#
-# Specifying a `duration` of `0` will disable the visual bell.
-#visual_bell:
-#  animation: EaseOutExpo
-#  duration: 0
-#  color: '0xffffff'
+    black:   '0x555555'
+    red:     '0xff5555'
+    green:   '0x50fa7b'
+    yellow:  '0xf1fa8c'
+    blue:    '0xcaa9fa'
+    magenta: '0xff79c6'
+    cyan:    '0x8be9fd'
+    white:   '0xffffff'
 
 # Background opacity
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 0.9
+background_opacity: 1.0
 
 #selection:
   #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
@@ -215,7 +157,7 @@ cursor:
   #   - ▇ Block
   #   - _ Underline
   #   - | Beam
-  style: Beam
+  style: Underline
 
   # If this is `true`, the cursor will be rendered as a hollow box when the
   # window is not focused.
@@ -230,9 +172,7 @@ cursor:
 # Entries in `shell.args` are passed unmodified as arguments to the shell.
 #
 # Default:
-#   - (macOS) /bin/bash --login
 #   - (Linux/BSD) user login shell
-#   - (Windows) powershell
 #shell:
 #  program: /bin/bash
 #  args:
@@ -281,14 +221,14 @@ cursor:
   # Record all characters and escape sequences as test data.
   #ref_test: false
 
-#mouse:
+mouse:
   # Click settings
   #
   # The `double_click` and `triple_click` settings control the time
   # alacritty should wait for accepting multiple clicks as one double
   # or triple click.
-  #double_click: { threshold: 300 }
-  #triple_click: { threshold: 300 }
+  double_click: { threshold: 300 }
+  triple_click: { threshold: 300 }
 
   # If this is `true`, the cursor is temporarily hidden when typing.
   hide_when_typing: false
@@ -334,8 +274,8 @@ cursor:
 # And optionally:
 #
 # - `mods` (see key bindings)
-#mouse_bindings:
-#  - { mouse: Middle, action: PasteSelection }
+mouse_bindings:
+  - { mouse: Middle, action: Paste }
 
 # Key bindings
 #
@@ -474,3 +414,9 @@ cursor:
   #- { key: PageDown,  mods: Shift,   action: ScrollPageDown, mode: ~Alt       }
   #- { key: Home,      mods: Shift,   action: ScrollToTop,    mode: ~Alt       }
   #- { key: End,       mods: Shift,   action: ScrollToBottom, mode: ~Alt       }
+  
+# Display tabs using this many cells (changes require restart)
+tabspaces: 4
+
+# When true, bold text is drawn using the bright variants of colors.
+draw_bold_text_with_bright_colors: true

@@ -1,5 +1,5 @@
 #==========================================================================
-# My personal $HOME/.bashrc FILE
+# My personal $HOME/.bashrc config FILE
 #==========================================================================
 
 # If not running interactively, don't do anything
