@@ -16,9 +16,8 @@ Plug 'junegunn/goyo.vim'                    " distraction-free writing
 Plug 'vim-utils/vim-man'                    " grep man pages
 Plug 'vifm/vifm.vim'                        " file manager
 Plug 'jalvesaq/Nvim-R'                      " R support
-Plug 'jalvesaq/R-Vim-runtime'		        " for python syntax highlighting in Plug
 Plug 'fatih/vim-go'			                " Go development plugin
-Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf.vim'                     " fuzzy finder
 
 call plug#end()
 
