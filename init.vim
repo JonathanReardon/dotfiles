@@ -1,5 +1,5 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""
-" -> vim plugged for plugin management
+" → vim plugged for plugin management
 """""""""""""""""""""""""""""""""""""""""""""""""""""
 
 call plug#begin('~/.vim/plugged')           " list plugins after this line
@@ -8,20 +8,16 @@ Plug 'donRaphaco/neotex', {'for': 'tex'}    " asynchronous latex compilation
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 Plug 'preservim/nerdcommenter'
 Plug 'scrooloose/syntastic'                 " code syntax checking
-Plug 'Shougo/deoplete.nvim'                 " asynchronous code completion
 Plug 'brooth/far.vim'                       " find and replace
-"Plug 'roxma/nvim-completion-manager'
 Plug 'ap/vim-css-color'                     " color highlighting
 Plug 'itchyny/lightline.vim'                
 Plug 'vim-scripts/indentpython.vim'
 Plug 'junegunn/goyo.vim'                    " distraction-free writing
 Plug 'vim-utils/vim-man'                    " grep man pages
-Plug 'zchee/deoplete-go'                    " Go-lang completion
-Plug 'zchee/deoplete-jedi'                  " multi-lang completion
 Plug 'vifm/vifm.vim'                        " file manager
 Plug 'jalvesaq/Nvim-R'                      " R support
-Plug 'jalvesaq/R-Vim-runtime'		    " for python syntax highlighting in Plug '
-Plug 'fatih/vim-go'			    " Go development plugin
+Plug 'jalvesaq/R-Vim-runtime'		        " for python syntax highlighting in Plug '
+Plug 'fatih/vim-go'			                " Go development plugin
 
 call plug#end()
 
@@ -41,10 +37,13 @@ set encoding=utf-8
 set background=dark
 set t_Co=256                                " use 256 colors (if terminal supports)
 set mouse=nicr                              " mouse scrolling
-set mouse=a                                 " alacritty/neovim compatibility
+set mouse=r                                 " alacritty/neovim compatibility
+set cursorline                              " highlighting of current line
+set ruler                                   " display cursor position
+set clipboard=unnamedplus                   " copy/paste between vim and everything else
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""
-" -> lightline
+" → lightline
 """""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:lightline = {
     \ 'colorscheme': 'wombat',
@@ -54,11 +53,24 @@ let g:lightline = {
     \ }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""
-" -> neotex
+" → neotex
 """""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:neotex_enabled = 1
 let g:neotex_delay = 1000                   " document update interval 
 let g:tex_flavor = 'latex'                  " prevents issues
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
+" → k/mappings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
+inoremap jk <Esc>                           " quicker escape mode
+inoremap kj <Esc>
+
+inoremap <c-u> <ESC>viwUi                   " easy caps
+nnoremap <c-u> viwU<Esc>
+
+vnoremap < <gv                              " better tabbing
+vnoremap > >gv
+
 
 syntax on                                   " syntax highlighting
 let g:rmd_syn_langs = ["r", "python"]       " python syntax highlight in Rmd 
