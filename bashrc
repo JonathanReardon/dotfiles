@@ -226,3 +226,5 @@ fi
 synclient TapButton3=2
 
 source /home/jon/.config/broot/launcher/bash/br
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
