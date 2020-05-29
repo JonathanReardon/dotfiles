@@ -201,7 +201,7 @@ function extract()      # Auto extraction
 }
 
 # Copy and go to the directory
-cpg ()
+function cpg()
 {
 	if [ -d "$2" ];then
 		cp $1 $2 && cd $2
@@ -211,7 +211,7 @@ cpg ()
 }
 
 # Move and go to the directory
-mvg ()
+function mvg()
 {
 	if [ -d "$2" ];then
 		mv $1 $2 && cd $2
@@ -221,7 +221,7 @@ mvg ()
 }
 
 # Create and go to the directory
-mkdirg ()
+function mkdirg()
 {
 	mkdir -p $1
 	cd $1
