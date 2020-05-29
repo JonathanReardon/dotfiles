@@ -200,7 +200,7 @@ function extract()      # Auto extraction
     fi
 }
 
-# Copy and go to the directory
+# Copy and move to dir
 function cpg()
 {
 	if [ -d "$2" ];then
@@ -210,7 +210,7 @@ function cpg()
 	fi
 }
 
-# Move and go to the directory
+# Move and move to dir
 function mvg()
 {
 	if [ -d "$2" ];then
@@ -220,11 +220,21 @@ function mvg()
 	fi
 }
 
-# Create and go to the directory
+# Create and move into dir
 function mkdirg()
 {
 	mkdir -p $1
 	cd $1
+}
+
+# Automatically ls after cd
+function cd()
+ {
+ 	if [ -n "$1" ]; then
+ 		builtin cd "$@" && ls
+ 	else
+ 		builtin cd ~ && ls
+ 	fi
 }
 
 # Add an "alert" alias for long running commands.  Use like so:
